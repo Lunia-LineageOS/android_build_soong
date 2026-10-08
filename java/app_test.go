@@ -5242,9 +5242,9 @@ override_android_app {
 				}),
 				android.OptionalFixturePreparer(tc.preparer),
 			).RunTestWithBp(t, bp)
-			vendorOverlayApk := result.ModuleForTests(t, "foo__test_product__auto_generated_rro_vendor", "android_arm64_armv8-a").MaybeOutput("foo__test_product__auto_generated_rro_vendor.apk")
+			vendorOverlayApk := result.ModuleForTests(t, "foo__test_device__auto_generated_rro_vendor", "android_arm64_armv8-a").MaybeOutput("foo__test_device__auto_generated_rro_vendor.apk")
 			android.AssertBoolEquals(t, tc.desc, tc.overlayApkExpected, vendorOverlayApk.Rule != nil)
-			overrideVendorOverlayApk := result.ModuleForTests(t, "override_foo__test_product__auto_generated_rro_vendor", "android_arm64_armv8-a").MaybeOutput("override_foo__test_product__auto_generated_rro_vendor.apk")
+			overrideVendorOverlayApk := result.ModuleForTests(t, "override_foo__test_device__auto_generated_rro_vendor", "android_arm64_armv8-a").MaybeOutput("override_foo__test_device__auto_generated_rro_vendor.apk")
 			android.AssertBoolEquals(t, tc.desc, tc.overlayApkExpected, overrideVendorOverlayApk.Rule != nil)
 		})
 	}
@@ -5320,7 +5320,7 @@ my_custom_override_android_app {
 				}.AddToFixture(),
 				android.OptionalFixturePreparer(tc.preparer),
 			).RunTestWithBp(t, bp)
-			overrideVendorOverlayApk := result.ModuleForTests(t, "override_foo__test_product__auto_generated_rro_vendor", "android_arm64_armv8-a").Module().(*AutogenRuntimeResourceOverlay)
+			overrideVendorOverlayApk := result.ModuleForTests(t, "override_foo__test_device__auto_generated_rro_vendor", "android_arm64_armv8-a").Module().(*AutogenRuntimeResourceOverlay)
 			android.AssertBoolEquals(t, tc.desc, tc.overlayApkExpected, overrideVendorOverlayApk.exportPackage != nil)
 		})
 	}

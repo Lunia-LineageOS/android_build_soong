@@ -1265,6 +1265,12 @@ func (c *config) DeviceName() string {
 	return *c.productVariables.DeviceName
 }
 
+// DeviceNameToInstall returns the name of the current device target. Unlike
+// DeviceName(), it is also available in the generic configuration.
+func (c *config) DeviceNameToInstall() string {
+	return *c.deviceNameToInstall
+}
+
 // DeviceProduct returns the current product target. There could be multiple of
 // these per device type.
 //
